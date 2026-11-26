@@ -1,4 +1,4 @@
-import { ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight, Clock, MapPin, MessageCircle, Plus } from 'lucide-react'
 import { clinic, testimonials, whatsappLink } from '../../data/clinic'
 import { Container } from '../components/ui'
 
@@ -62,9 +62,33 @@ export function Home() {
     <section id="duvidas" className="scroll-mt-20"><Container className="grid gap-6 border-t border-line py-12 md:grid-cols-[0.8fr_1.2fr] sm:py-16"><h2 className={heading}>Antes da visita</h2>
       <div>{questions.map(([question, answer]) => <details key={question} className="group border-b border-line-strong"><summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-4 font-medium">{question}<Plus aria-hidden size={16} className="shrink-0 group-open:rotate-45"/></summary><p className="pb-4 leading-relaxed text-muted">{answer}</p></details>)}</div>
     </Container></section>
-    <section id="contato" className="scroll-mt-20 bg-[#49382f] text-[#faf4eb]"><Container className="grid gap-8 py-12 sm:py-16 md:grid-cols-2">
-      <div><h2 className={heading}>Visite a clínica</h2><address className="my-5 not-italic">{clinic.address}<br/>{clinic.addressLine2}</address><a href={clinic.mapsUrl} className="inline-flex items-center gap-2 underline underline-offset-4">Abrir rota no mapa <ArrowUpRight size={16}/></a></div>
-      <div><h3 className="font-display text-3xl">Horários de atendimento</h3><dl className="mt-4 max-w-md">{clinic.hours.map(({ days, time }) => <div key={days} className="flex justify-between gap-3 border-b border-white/25 py-2"><dt>{days}</dt><dd>{time}</dd></div>)}</dl><a href={whatsappLink()} className="mt-5 inline-flex items-center gap-2 font-medium underline underline-offset-4">WhatsApp {clinic.whatsappDisplay}<ArrowUpRight size={16}/></a></div>
-    </Container></section>
+    <section id="contato" aria-labelledby="titulo-contato" className="scroll-mt-20 bg-surface">
+      <Container className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[0.85fr_1.25fr] lg:gap-16">
+        <div>
+          <h2 id="titulo-contato" className="font-display text-[46px] leading-[1.03] text-fg sm:text-[64px]">
+            Visite a clínica<br/>em Joinville.
+          </h2>
+          <div className="mt-8 grid grid-cols-[40px_1fr] items-start gap-x-4 gap-y-5">
+            <MapPin aria-hidden className="size-10 rounded-xl bg-accent-soft p-2.5 text-[#754934]"/>
+            <div><h3 className="font-semibold">Endereço</h3>
+              <address className="mt-1 not-italic leading-relaxed text-muted">{clinic.address}<br/>{clinic.addressLine2}</address></div>
+            <Clock aria-hidden className="size-10 rounded-xl bg-accent-soft p-2.5 text-[#754934]"/>
+            <div><h3 className="font-semibold">Horários de atendimento</h3>
+              <dl className="mt-1 max-w-xs text-muted">{clinic.hours.map(({ days, time }) =>
+                <div key={days} className="flex justify-between gap-4 py-0.5"><dt>{days}</dt><dd>{time}</dd></div>)}</dl></div>
+            <MessageCircle aria-hidden className="size-10 rounded-xl bg-accent-soft p-2.5 text-[#754934]"/>
+            <div><h3 className="font-semibold">WhatsApp</h3>
+              <a href={whatsappLink()} className="inline-flex py-1 text-muted hover:underline">{clinic.whatsappDisplay}</a></div>
+          </div>
+          <a href={clinic.mapsUrl} target="_blank" rel="noreferrer" className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full border border-[#906f5d] px-6 font-medium hover:bg-accent-soft">Como chegar <ArrowUpRight size={16} aria-hidden/></a>
+        </div>
+        <iframe
+          title="Mapa da clínica Najla Sousa no bairro Aventureiro, Joinville"
+          src={`https://maps.google.com/maps?q=${encodeURIComponent([clinic.address, clinic.neighborhood, clinic.city, 'SC', 'Brasil'].join(', '))}&hl=pt-BR&z=16&output=embed`}
+          className="h-[310px] w-full rounded-[22px] border border-line bg-surface-2 shadow-soft sm:h-[420px]"
+          loading="lazy" allowFullScreen referrerPolicy="no-referrer-when-downgrade"
+        />
+      </Container>
+    </section>
   </>
 }
