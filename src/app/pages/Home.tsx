@@ -16,7 +16,7 @@ const questions = [
   ['Quem pode agendar?', 'Atendo adultos e adolescentes. Se precisar de alguma adaptação para a visita, pode combinar comigo pelo WhatsApp.'],
   ['Como consultar horários e valores?', 'Envie uma mensagem pelo WhatsApp com o cuidado que procura. Por lá, você pode consultar a agenda e tirar dúvidas antes da visita.'],
 ]
-const heading = 'font-display text-[42px] leading-[1.02] sm:text-[58px]'
+const heading = 'font-sans text-[34px] font-medium leading-[1.1] tracking-[-0.045em] sm:text-[48px]'
 const button = 'inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-[#713f31] px-6 font-medium text-white transition-colors hover:bg-[#513024]'
 export function Home() {
   return <>
@@ -25,7 +25,7 @@ export function Home() {
         <div className="grid overflow-hidden rounded-[28px] bg-[#eee4d7] md:grid-cols-[1fr_1.02fr]">
           <div className="flex flex-col items-start justify-center p-7 sm:p-12 lg:p-16">
             <p className="mb-6 text-xs font-medium tracking-[0.14em] uppercase text-[#704b3c]">Aventureiro · Joinville</p>
-            <h1 className="font-display text-[clamp(52px,6.2vw,88px)] leading-[0.98]">Estética facial<br/><em className="text-[#81513f]">com Najla Sousa</em></h1>
+            <h1 className="font-sans text-[clamp(40px,4.8vw,72px)] font-medium leading-[1.05] tracking-[-0.05em]">Estética facial<br/><em className="font-display text-[1.12em] text-[#81513f]">com Najla Sousa</em></h1>
             <p className="my-7 max-w-sm text-base leading-relaxed text-muted">Quer cuidar da acne, das manchas ou da textura da pele? Na avaliação, conversamos sobre o que te incomoda e definimos por onde começar.</p>
             <a href={whatsappLink()} className={button}>Agendar avaliação <ArrowUpRight size={17}/></a>
           </div>
@@ -40,7 +40,7 @@ export function Home() {
           <img src={imagePath('tratamento')} alt="Aplicação de máscara facial com pincel" loading="lazy" className="h-60 w-full rounded-[22px] object-cover md:h-full md:max-h-[520px]"/>
           <div className="border-t border-line-strong">{services.map(([title, body]) =>
             <details key={title} className="group border-b border-line-strong py-1">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-[28px]">{title}<Plus aria-hidden size={18} className="shrink-0 transition-transform group-open:rotate-45"/></summary>
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-sans text-xl font-medium leading-snug tracking-[-0.025em] sm:text-2xl">{title}<Plus aria-hidden size={18} className="shrink-0 transition-transform group-open:rotate-45"/></summary>
               <p className="max-w-lg pb-4 leading-relaxed text-muted">{body}</p>
             </details>)}</div>
         </div>
