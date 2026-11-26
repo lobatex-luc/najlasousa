@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { Menu, MessageCircle, Sparkles, X } from 'lucide-react'
+import { Menu, MessageCircle, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { clinic, whatsappLink } from '../../data/clinic'
@@ -40,15 +40,6 @@ export function Nav() {
 
   return (
     <>
-      <a
-        href={whatsappLink()}
-        target="_blank"
-        rel="noreferrer"
-        className="flex h-9 items-center justify-center gap-2 bg-fg px-4 text-center text-[12.5px] text-bg transition-colors hover:bg-[#33302b]"
-      >
-        <Sparkles className="size-3.5" />
-        Agenda aberta em Joinville — agende sua avaliação pelo WhatsApp
-      </a>
       <header className={cx('sticky top-0 z-40 transition-[background-color,box-shadow,border-color] duration-300', scrolled ? 'border-b border-line bg-bg/85 backdrop-blur-xl' : 'bg-bg')}>
         <div className="mx-auto grid h-16 max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center px-5 sm:px-8">
           <nav className="hidden items-center gap-1 lg:flex">
@@ -68,7 +59,7 @@ export function Nav() {
             <a href={clinic.instagram} target="_blank" rel="noreferrer" className="hidden h-9 items-center rounded-[11px] px-3 text-[14px] text-muted transition-colors hover:bg-surface-2 hover:text-fg sm:inline-flex">
               Instagram
             </a>
-            <a href={whatsappLink()} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-control bg-fg px-4 text-[14px] font-medium text-bg transition-colors hover:bg-[#33302b]">
+            <a href={whatsappLink()} aria-label="Agendar pelo WhatsApp" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-control bg-fg px-4 text-[14px] font-medium text-bg transition-colors hover:bg-[#33302b]">
               <MessageCircle className="size-4" />
               <span className="hidden sm:inline">Agendar</span>
             </a>
